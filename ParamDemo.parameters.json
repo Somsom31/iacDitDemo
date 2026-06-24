@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "iac-DemoPara"
+    },
+    "qty": {
+      "value": 7
+    },
+    "ipAddresses": {
+      "value": ["1.2.3.4", "6.7.8.9"]
+    },
+    "adminPassword": {
+      "value": "SuperGeheim!"
+    },
+    "config": {
+      "value": {
+        "kind": "StorageV5",
+        "sku": "Standard_MoonRS"
+      }
+    }
+  }
+}
