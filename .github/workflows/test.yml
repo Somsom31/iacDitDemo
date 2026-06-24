@@ -1,0 +1,30 @@
+name: IaC - VNet - OIDC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "deployVNet"
+  deployVNet:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment:
+      name: IaC
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: RepoCheckout
+        uses: actions/checkout@v6.0.0
+        
+      - name: Azure Login
+        uses: Azure/login@v3
+        with:
+          client-id: ${{ vars.CLIENT_ID }}
+          tenant-id: ${{ vars.TENANT_ID }}
+          subscription-id: ${{ vars.SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZ_IAC_SP }}
